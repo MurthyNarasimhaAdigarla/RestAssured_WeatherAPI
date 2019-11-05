@@ -1,4 +1,4 @@
-package seleniumrest;
+package MainClasses;
 
 import Files.PayLoad;
 import Files.Resources;

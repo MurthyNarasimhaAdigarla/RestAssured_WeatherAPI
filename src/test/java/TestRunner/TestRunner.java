@@ -12,7 +12,7 @@ plugin= {"pretty", "html:target/cucumber-RestReports"},
 strict=true,
 features = "src/test/java/Feature/WeatherAPI.feature",
 tags= {"@get"},
-glue= {"seleniumrest"},
+glue= {"MainClasses"},
 monochrome=true,
 dryRun=false
 
