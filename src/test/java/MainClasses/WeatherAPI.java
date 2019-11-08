@@ -13,16 +13,20 @@ import io.restassured.response.Response;
 import io.restassured.response.ValidatableResponse;
 import io.restassured.specification.RequestSpecification;
 
+
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.testng.Assert.assertEquals;
 
 public class WeatherAPI extends MainClass {
 
 
     private Response response;
-    private ValidatableResponse json;
+    private ValidatableResponse response_statusCode;
     RequestSpecification httpRequest = RestAssured.given();
     String responseBody;
     private String ID_value;
+    private JsonPath jp = null;
 
 
     @Given("^WeatherAPI URI$")
@@ -41,14 +45,16 @@ public class WeatherAPI extends MainClass {
     }
 
     @Then("^the status code is \"([^\"]*)\"$")
-    public void theStatusCodeIs(String statusCode) throws Throwable {
-        json = response.then().statusCode(Integer.parseInt(statusCode));
+    public void theStatusCodeIs(int status_Code) throws Throwable {
+        response_statusCode = response.then().statusCode((status_Code));
     }
 
     @And("^I validate response$")
     public void iValidateResponse() {
 
-        System.out.println("response of post request: " + response.prettyPrint());
+       System.out.println("response of post request: " + response.prettyPrint());
+       assertEquals(201, response.getStatusCode());
+      //  assertThat(jp.get("name"), containsString("Tuni"));
     }
 
     @When("^I execute get call for weatherAPI to get single station details$")
@@ -99,11 +105,17 @@ public class WeatherAPI extends MainClass {
     @Then("^I extract ID value from the response$")
     public void iExtractIDValueFromTheResponse() {
         responseBody = response.asString();
-        JsonPath jp = new JsonPath(responseBody);
+       jp = new JsonPath(responseBody);
         ID_value = jp.getString("ID");
 
         System.out.println("ID value from response is : " + ID_value);
     }
 
+    @And("^I get all ID details of all Stations$")
+    public void iGetAllIDDetailsOfAllStations() {
+
+        String ids = response.jsonPath().getString("id");
+        System.out.println("All IDs of this appid are"  + ids);
+    }
 }
 
