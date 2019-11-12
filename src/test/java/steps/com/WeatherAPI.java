@@ -170,7 +170,7 @@ public class WeatherAPI extends MainClass {
             jp = new JsonPath(responseBody);
             ID_value = jp.getString("ID");
 
-            System.out.println("ID value from response is : " + ID_value);
+            System.out.println("ID value from response is  : " + ID_value);
 
             response = given().header("Content-Type", "application/json")
                     .queryParam("appid", "a474909b9bd0b5205ac147da58080c0f")
