@@ -32,14 +32,14 @@
 <dependency>
  <groupId>org.json</groupId>
   <artifactId>json</artifactId>
-   <version>20160810</version> 
+   <version>20231013</version>
    </dependency>
 
 <!-- These are the junit dependencies -->
 <dependency>
 <groupId>junit</groupId>
 <artifactId>junit</artifactId>
-<version>4.12</version>
+<version>4.13.1</version>
 </dependency>
 
 <!-- https://mvnrepository.com/artifact/io.rest-assured/rest-assured -->

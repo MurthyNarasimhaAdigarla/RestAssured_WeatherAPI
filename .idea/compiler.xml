@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="RestAssured_WeatherAPI" />
+        <module name="WeatherAPI_Services" />
       </profile>
     </annotationProcessing>
   </component>
